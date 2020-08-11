@@ -1,5 +1,5 @@
 import {GraphQLServer} from 'graphql-yoga';
-// import './database';
+import './database';
 
 import {UserSchema} from './modules/users';
 import {ClassSchema} from './modules/classes';
