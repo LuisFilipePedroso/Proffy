@@ -1,7 +1,7 @@
 import QueryController from './QueryController';
 
 const QuerySDLType = `
-  findUsers: [User!]!
+  findAllUsers: [User!]!
   findUserById(id: ID!): User!
 `
 

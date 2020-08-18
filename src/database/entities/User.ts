@@ -10,6 +10,11 @@ import {
 import Class from './Class';
 import Connection from './Connection';
 
+export enum UserStatus {
+  ACTIVE,
+  DELETED
+}
+
 @Entity('users')
 class User {
   @PrimaryGeneratedColumn('uuid')
@@ -17,6 +22,12 @@ class User {
 
   @Column({ nullable: false })
   name: string;
+
+  @Column()
+  email: string;
+
+  @Column()
+  password: string;
 
   @Column({ nullable: false })
   avatar: string;
@@ -32,6 +43,9 @@ class User {
 
   @OneToMany(type => Connection, table => table.user)
   connections: Connection[];
+
+  @Column({ default: UserStatus.ACTIVE })
+  status: UserStatus;
 
   @CreateDateColumn()
   created_at: Date;

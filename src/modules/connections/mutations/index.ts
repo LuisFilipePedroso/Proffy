@@ -7,7 +7,7 @@ const MutationInputSDLType = `
 `
 
 const MutationTypesSDLType = `
-  createConnection(input: CreateClassScheduleInput!): Connection!
+  createConnection(input: CreateConnectionInput!): Connection!
 `
 
 export {

@@ -1,4 +1,4 @@
-import { getRepository, Repository } from 'typeorm';
+import {getRepository, Repository} from 'typeorm';
 
 import User from '../../../database/entities/User';
 import IUserRepository from './IUsersRepository';
@@ -13,11 +13,25 @@ class UsersRepository implements IUserRepository {
   }
 
   public async find(): Promise<User[]> {
-    return await this.ormRepository.find();
+    return await this.ormRepository.find({
+      where: {
+        status: 0
+      }
+    });
   }
 
   public async findById(id: string): Promise<User | undefined> {
-    const user = await this.ormRepository.findOne(id, );
+    const user = await this.ormRepository.findOne(id);
+
+    return user;
+  }
+
+  public async findByEmail(email: string): Promise<User | undefined> {
+    const user = await this.ormRepository.findOne({
+      where: {
+        email,
+      },
+    });
 
     return user;
   }
@@ -30,8 +44,14 @@ class UsersRepository implements IUserRepository {
     return user;
   }
 
-  public async save(user: IUpdateUserDTO): Promise<User> {
-    return this.ormRepository.save(user);
+  public async save(partialUser: IUpdateUserDTO): Promise<User | undefined> {
+    // Preload is going to get a partial entity and assign with the original entity;
+    const user = await this.ormRepository.preload(partialUser);
+
+    if (user) {
+      const updatedUser =  await this.ormRepository.save(user);
+      return updatedUser;
+    }
   }
 }
 

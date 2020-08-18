@@ -29,6 +29,10 @@ export default class CreateClasses1596798751896 implements MigrationInterface {
                       type: 'uuid',
                   },
                   {
+                      name: 'status',
+                      type: 'integer'
+                  },
+                  {
                       name: 'created_at',
                       type: 'timestamp',
                       default: 'now()',

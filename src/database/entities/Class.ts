@@ -12,6 +12,12 @@ import {
 import User from './User';
 import ClassSchedule from './ClassSchedule';
 
+
+export enum ClassStatus {
+  ACTIVE,
+  DELETED
+}
+
 @Entity('classes')
 class Class {
   @PrimaryGeneratedColumn('uuid')
@@ -21,7 +27,7 @@ class Class {
   subject: string;
 
   @Column({ type: "decimal", nullable: false })
-  cost: string;
+  cost: number;
 
   @Column()
   user_id: string;
@@ -31,7 +37,10 @@ class Class {
   user: User;
 
   @OneToMany(type => ClassSchedule, table => table.classes)
-  classSchedules: ClassSchedule[];
+  schedule: ClassSchedule[];
+
+  @Column({ default: ClassStatus.ACTIVE })
+  status: ClassStatus;
 
   @CreateDateColumn()
   created_at: Date;

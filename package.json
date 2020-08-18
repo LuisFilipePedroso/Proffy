@@ -8,12 +8,15 @@
     "typeorm": "tsnd ./node_modules/typeorm/cli.js"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "ts-node-dev": "^1.0.0-pre.56",
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "graphql-yoga": "^1.18.3",
     "pg": "^8.3.0",
+    "tsyringe": "^4.3.0",
     "typeorm": "^0.2.25"
   }
 }

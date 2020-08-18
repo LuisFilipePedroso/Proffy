@@ -3,6 +3,8 @@ import MutationController from './MutationController';
 const MutationInputSDLType = `
   input CreateUserInput {
     name: String!
+    email: String!
+    password: String!
     avatar: String!
     whatsapp: String!
     bio: String!  
@@ -18,7 +20,8 @@ const MutationInputSDLType = `
 
 const MutationTypesSDLType = `
   createUser(input: CreateUserInput!): User
-  updateUser(input: UpdateUserInput!): User!
+  updateUser(id: ID!, input: UpdateUserInput!): User!
+  deleteUser(id: ID!): User!
 `
 
 export {

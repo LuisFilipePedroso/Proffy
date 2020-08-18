@@ -1,7 +1,7 @@
 import QueryController from './QueryController';
 
 const QuerySDLType = `
-  findClasses: [Class!]!
+  findAllClasses: [Class!]!
   findClassById(id: ID!): Class!
 `
 

@@ -1,5 +1,6 @@
 import {GraphQLServer} from 'graphql-yoga';
 import './database';
+import './shared/container';
 
 import {UserSchema} from './modules/users';
 import {ClassSchema} from './modules/classes';
@@ -9,7 +10,7 @@ import Mutations from './modules/rootMutation';
 import Queries from './modules/rootQuery';
 import Resolvers from './modules/rootResolvers';
 
-const typeDefs = `${UserSchema} ${ClassSchema} ${ClassScheduleSchema} ${ConnectionSchema} ${Mutations} ${Queries}`;
+const typeDefs = `${UserSchema} ${ClassScheduleSchema} ${ClassSchema} ${ConnectionSchema} ${Mutations} ${Queries}`;
 
 const server = new GraphQLServer({
   typeDefs: typeDefs,
@@ -17,6 +18,6 @@ const server = new GraphQLServer({
 });
 
 server.start({
-  port: 3333
+  port: 3333,
 }, () => console.log('Server is running on port 3333'))
 

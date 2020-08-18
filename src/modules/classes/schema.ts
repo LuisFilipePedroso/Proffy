@@ -3,6 +3,8 @@ export default `
     id: ID!
     subject: String!
     cost: Int!
-    user_id: String!
+    user: User!
+    schedule: [ClassSchedule!]!
+    status: Int
   }
 `;

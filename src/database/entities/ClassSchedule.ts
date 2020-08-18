@@ -10,15 +10,25 @@ import {
 
 import Class from './Class';
 
+export enum WeekDay {
+  SUNDAY,
+  MONDAY,
+  TUESDAY,
+  WEDNESDAY,
+  THURSDAY,
+  FRIDAY,
+  SATURDAY
+}
+
 @Entity('class_schedule')
 class ClassSchedule {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ nullable: false })
-  week_day: number;
+  @Column({nullable: false})
+  week_day: WeekDay;
 
-  @Column({ nullable: false })
+  @Column({nullable: false})
   from: number;
 
   @Column()
@@ -28,7 +38,7 @@ class ClassSchedule {
   class_id: string;
 
   @ManyToOne(type => Class, table => table.id)
-  @JoinColumn({ name: 'class_id' })
+  @JoinColumn({name: 'class_id'})
   classes: Class;
 
   @CreateDateColumn()
