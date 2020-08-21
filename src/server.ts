@@ -5,7 +5,7 @@ import './shared/container';
 //TODO: install eslint;
 
 import {UserSchema, userLoader} from './modules/users';
-import {ClassSchema} from './modules/classes';
+import {ClassSchema, classLoader} from './modules/classes';
 import {ClassScheduleSchema} from './modules/classSchedule';
 import {ConnectionSchema} from './modules/connections';
 import Mutations from './modules/rootMutation';
@@ -18,7 +18,8 @@ const server = new GraphQLServer({
   typeDefs: typeDefs,
   resolvers: Resolvers,
   context: () => ({
-    userLoader: userLoader()
+    userLoader: userLoader(),
+    classLoader: classLoader()
   })
 });
 

@@ -1,8 +1,6 @@
 import ClassesRepository from '../repositories/ClassesRepository';
 
-type Args = {
-  id: string;
-}
+import { Args, Context } from '../../../shared/types';
 
 class QueryController {
 
@@ -14,7 +12,13 @@ class QueryController {
     return classes;
   }
 
-  async show(parent: any, { id }: Args) {
+  async show(parent: any, { id }: Args, context: Context) {
+    const cachedClass = await context.classLoader.load(id);
+
+    if (cachedClass) {
+      return cachedClass;
+    }
+
     const classesRepository = new ClassesRepository();
 
     const classExists = classesRepository.findById(id);

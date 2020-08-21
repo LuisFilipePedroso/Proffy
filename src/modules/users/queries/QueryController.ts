@@ -1,15 +1,6 @@
-import DataLoader from 'dataloader';
-
-import User from '../../../database/entities/User';
 import UsersRepository from '../repositories/UsersRepository';
 
-type Args = {
-  id: string;
-}
-
-type Context = {
-  userLoader: DataLoader<string, User[]>
-}
+import { Args, Context } from '../../../shared/types';
 
 class QueryController {
 

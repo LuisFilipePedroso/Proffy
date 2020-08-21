@@ -31,6 +31,16 @@ class ClassesRepository implements IClassesRepository {
     }
   }
 
+  public async findByIds(ids: ReadonlyArray<string>): Promise<Class[] | undefined> {
+    try {
+      return await this.ormRepository.findByIds(ids as string[], {
+        relations: ['schedule']
+      });
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
   public async create(classData: ICreateClassDTO): Promise<Class> {
     const createdClass = this.ormRepository.create({
       subject: classData.subject,
