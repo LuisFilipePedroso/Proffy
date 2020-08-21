@@ -38,6 +38,7 @@ export default class CreateUsers1596798467520 implements MigrationInterface {
                   {
                       name: 'status',
                       type: 'integer',
+                      isNullable: true,
                       default: 0
                   },
                   {

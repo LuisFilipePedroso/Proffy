@@ -2,7 +2,9 @@ import {GraphQLServer} from 'graphql-yoga';
 import './database';
 import './shared/container';
 
-import {UserSchema} from './modules/users';
+//TODO: install eslint;
+
+import {UserSchema, userLoader} from './modules/users';
 import {ClassSchema} from './modules/classes';
 import {ClassScheduleSchema} from './modules/classSchedule';
 import {ConnectionSchema} from './modules/connections';
@@ -14,7 +16,10 @@ const typeDefs = `${UserSchema} ${ClassScheduleSchema} ${ClassSchema} ${Connecti
 
 const server = new GraphQLServer({
   typeDefs: typeDefs,
-  resolvers: Resolvers
+  resolvers: Resolvers,
+  context: () => ({
+    userLoader: userLoader()
+  })
 });
 
 server.start({

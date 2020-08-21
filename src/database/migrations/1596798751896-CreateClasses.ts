@@ -30,7 +30,9 @@ export default class CreateClasses1596798751896 implements MigrationInterface {
                   },
                   {
                       name: 'status',
-                      type: 'integer'
+                      type: 'integer',
+                      isNullable: true,
+                      default: 0
                   },
                   {
                       name: 'created_at',

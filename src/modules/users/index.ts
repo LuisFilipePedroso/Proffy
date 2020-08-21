@@ -8,6 +8,7 @@ import {
   QuerySDLType as UsersQuerySDLType,
   QueryController as UserQueryController
 } from './queries';
+import { userLoader } from './loaders';
 
 export {
   UserSchema,
@@ -15,5 +16,6 @@ export {
   UsersMutationType,
   UsersQuerySDLType,
   UserMutationController,
-  UserQueryController
+  UserQueryController,
+  userLoader
 };

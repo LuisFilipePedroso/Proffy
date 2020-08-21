@@ -26,6 +26,12 @@ class UsersRepository implements IUserRepository {
     return user;
   }
 
+  public async findByIds(ids: ReadonlyArray<string>): Promise<User[] | undefined> {
+    const users = await this.ormRepository.findByIds(ids as string[]);
+
+    return users;
+  }
+
   public async findByEmail(email: string): Promise<User | undefined> {
     const user = await this.ormRepository.findOne({
       where: {

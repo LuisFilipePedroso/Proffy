@@ -20,10 +20,10 @@ export interface IRequest {
 }
 
 @injectable()
-class UpdateClassService {
+class CreateClassService {
 
   constructor(
-    @inject('UsersRepository')
+    @inject('ClassesRepository')
     private classRepository: IClassesRepository,
 
     @inject('ClassScheduleRepository')
@@ -54,4 +54,4 @@ class UpdateClassService {
   }
 }
 
-export default UpdateClassService;
+export default CreateClassService;
