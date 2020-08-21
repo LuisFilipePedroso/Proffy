@@ -1,5 +1,9 @@
 import ClassesRepository from '../repositories/ClassesRepository';
 
+type Args = {
+  id: string;
+}
+
 class QueryController {
 
   async find() {
@@ -10,7 +14,7 @@ class QueryController {
     return classes;
   }
 
-  async show(parent: any, id: string) {
+  async show(parent: any, { id }: Args) {
     const classesRepository = new ClassesRepository();
 
     const classExists = classesRepository.findById(id);
